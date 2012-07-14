@@ -35,5 +35,6 @@ public class LogAdvice {
 	@Before("getDays(year,month)")
 	public void beforeGetDays(Integer year, String month, JoinPoint joinPoint) {
 		logger.info("Year =>"+year+" month =>"+month);
+		//sts is adding this line
 	}
 }
