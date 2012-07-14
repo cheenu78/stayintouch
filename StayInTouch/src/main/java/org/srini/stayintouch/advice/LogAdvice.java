@@ -23,7 +23,7 @@ public class LogAdvice {
 	public void beforeLoginCall(Principal principal, JoinPoint joinPoint) {
 		logger.info("1--------------->Entered User Name"+principal.getName());
 		logger.info("2--------------->"+joinPoint.getSignature().toString());
-		//just adding a comment...
+		//one more comment
 	}
 	
 	@Pointcut("execution (* org.srini.stayintouch.controllers.HomeController.getDays(..)) && args(year, month, ..)")
