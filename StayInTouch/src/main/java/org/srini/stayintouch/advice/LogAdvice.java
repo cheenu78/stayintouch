@@ -23,6 +23,7 @@ public class LogAdvice {
 	public void beforeLoginCall(Principal principal, JoinPoint joinPoint) {
 		logger.info("1--------------->Entered User Name"+principal.getName());
 		logger.info("2--------------->"+joinPoint.getSignature().toString());
+		//a comment here...
 	}
 	
 	@Pointcut("execution (* org.srini.stayintouch.controllers.HomeController.getDays(..)) && args(year, month, ..)")
@@ -33,5 +34,6 @@ public class LogAdvice {
 	@Before("getDays(year,month)")
 	public void beforeGetDays(Integer year, String month, JoinPoint joinPoint) {
 		logger.info("Year =>"+year+" month =>"+month);
+		//a comment here
 	}
 }
