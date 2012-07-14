@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
@@ -17,7 +15,7 @@ import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 
@@ -32,7 +30,8 @@ public class StayInTouchTest2 {
 	//@Before
 	public void setUp() throws Exception {
 		
-		driver = new InternetExplorerDriver();
+		//driver = new InternetExplorerDriver();
+		driver = new FirefoxDriver();
 		baseUrl = "http://localhost:8080/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
@@ -46,8 +45,8 @@ public class StayInTouchTest2 {
 	@Parameters
 	public static Collection createData(){
 		Object [][] retObj = {
-				{"cheenu78@gmail.com","njally_123"},
-				{"selenium@123.com","selenium_123"}
+				{"cheenu78@gmail.com","njally_123"}//,
+				//{"selenium@123.com","selenium_123"}
 		};
 		return Arrays.asList(retObj);
 	}
@@ -63,7 +62,7 @@ public class StayInTouchTest2 {
 		driver.findElement(By.id("j_password")).sendKeys(password);
 		driver.findElement(By.linkText("Login")).click();
 
-		assertEquals("Logout",driver.findElement(By.linkText("Logout")).getAttribute("value"));
+		assertEquals("Logout", driver.findElement(By.linkText("Logout")).getText());
 		driver.findElement(By.linkText("Logout")).click();
 		tearDown();
 	}
