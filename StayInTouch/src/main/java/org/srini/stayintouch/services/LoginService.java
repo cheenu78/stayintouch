@@ -7,11 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.srini.stayintouch.controllers.bo.UserBoImpl;
 import org.srini.stayintouch.controllers.model.User;
 import org.srini.stayintouch.controllers.model.UserDetails;
+import org.srini.stayintouch.controllers.model.UserRole;
+import org.srini.stayintouch.controllers.model.UserRoleMapping;
 import org.srini.stayintouch.validators.UserDetailsValidator;
 
 @Service("loginService")
@@ -22,12 +23,6 @@ public class LoginService {
 	
 	@Autowired
 	private UserBoImpl userBo;
-	
-	/*@Resource(name = "ldapService")
-	private LDAPService ldapService;
-	
-	@Value("${ldap_authentication}")
-	private String ldapAuthentication;*/
 	
 	@Transactional
 	public boolean save(UserDetailsValidator userDetailsValidator) throws Exception{
@@ -58,6 +53,12 @@ public class LoginService {
 		userBo.saveUser(user);
 		userDetails.setUser(user);
 		userBo.saveUserDetails(userDetails);
+		
+		UserRoleMapping mapping = new UserRoleMapping();
+		UserRole userRole = userBo.getRoleById(2);
+		mapping.setUser(user);
+		mapping.setUserRole(userRole);
+		userBo.saveUserRoleMapping(mapping);
 		
 		logger.info("Saved User "+user.getEmail());
 		

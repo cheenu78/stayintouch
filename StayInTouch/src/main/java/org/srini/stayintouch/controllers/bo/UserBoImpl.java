@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.srini.stayintouch.controllers.dao.UserDao;
 import org.srini.stayintouch.controllers.model.User;
 import org.srini.stayintouch.controllers.model.UserDetails;
+import org.srini.stayintouch.controllers.model.UserRole;
+import org.srini.stayintouch.controllers.model.UserRoleMapping;
 
 @Service("userBo")
 @Transactional
@@ -32,6 +34,11 @@ public class UserBoImpl {
 		return userDao.findUserByEmail(email);
 	}
 	
+	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
+	public UserRole getRoleById(Integer id){
+		return userDao.findUserRoleById(id);
+	}
+	
 	@Transactional(propagation=Propagation.SUPPORTS, readOnly=false)
 	public Serializable saveUser(User user){
 		return userDao.saveUser(user);
@@ -40,5 +47,10 @@ public class UserBoImpl {
 	@Transactional(propagation=Propagation.SUPPORTS, readOnly=false)
 	public Serializable saveUserDetails(UserDetails userDetails){
 		return userDao.saveUserDetails(userDetails);
+	}
+	
+	@Transactional(propagation=Propagation.SUPPORTS, readOnly=false)
+	public Serializable saveUserRoleMapping(UserRoleMapping userRoleMapping){
+		return userDao.saveUserRoleMapping(userRoleMapping);
 	}
 }

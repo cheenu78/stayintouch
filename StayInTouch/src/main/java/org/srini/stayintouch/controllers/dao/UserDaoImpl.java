@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.srini.stayintouch.controllers.model.User;
 import org.srini.stayintouch.controllers.model.UserDetails;
+import org.srini.stayintouch.controllers.model.UserRole;
+import org.srini.stayintouch.controllers.model.UserRoleMapping;
 import org.srini.stayintouch.util.CustomHibernateDaoSupport;
 
 
@@ -64,5 +66,17 @@ public class UserDaoImpl extends CustomHibernateDaoSupport implements UserDao {
 		query = query.setString(0, email);
 		User user =  (User)query.uniqueResult();
 		return user;
+	}
+	
+	public UserRole findUserRoleById(Integer id){
+		Session session = getSession();
+		Query query = session.createQuery("from org.srini.stayintouch.controllers.model.UserRole userRole WHERE userRole.id=?");
+		query = query.setInteger(0, id);
+		UserRole userRole =  (UserRole)query.uniqueResult();
+		return userRole;
+	}
+	
+	public Serializable saveUserRoleMapping(UserRoleMapping userRoleMapping){
+		return getHibernateTemplate().save(userRoleMapping);
 	}
 }

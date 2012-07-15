@@ -47,6 +47,8 @@
 			<beans:list>
 				<beans:value>org.srini.stayintouch.controllers.model.User</beans:value>
 				<beans:value>org.srini.stayintouch.controllers.model.UserDetails</beans:value>
+				<beans:value>org.srini.stayintouch.controllers.model.UserRole</beans:value>
+				<beans:value>org.srini.stayintouch.controllers.model.UserRoleMapping</beans:value>
 			</beans:list>
 		</beans:property>
     </beans:bean>

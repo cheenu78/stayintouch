@@ -1,6 +1,7 @@
 package org.srini.stayintouch.controllers.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -30,6 +33,18 @@ public class User implements Serializable{
 	private Integer id;
 	
 	private UserDetails userDetails;
+	private List<UserRoleMapping> userRoleMapping;
+
+	@OneToMany(fetch=FetchType.LAZY)
+	@JoinColumn(name="USER_TABLE_ID")
+	@Fetch(FetchMode.JOIN)
+	public List<UserRoleMapping> getUserRoleMapping() {
+		return userRoleMapping;
+	}
+
+	public void setUserRoleMapping(List<UserRoleMapping> userRoleMapping) {
+		this.userRoleMapping = userRoleMapping;
+	}
 
 	@OneToOne(fetch=FetchType.LAZY, mappedBy="user", cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@Fetch(FetchMode.JOIN)

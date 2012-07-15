@@ -46,6 +46,11 @@ BEGIN
  	IF v_count>0 THEN
     	execute immediate 'DROP sequence USER_ROLE_MAPPING_SEQ';
   	END IF;
+  	
+  	select count(*) INTO v_count from USER_sequences where sequence_name='USER_ROLES_SEQ';
+ 	IF v_count>0 THEN
+    	execute immediate 'DROP sequence USER_ROLES_SEQ';
+  	END IF;
 
 execute immediate 
 'CREATE TABLE USER_TABLE
@@ -101,6 +106,8 @@ execute immediate
 )';
 
 EXECUTE IMMEDIATE 'CREATE SEQUENCE USER_ROLE_MAPPING_SEQ START WITH 5';
+EXECUTE IMMEDIATE 'CREATE SEQUENCE USER_ROLES_SEQ START WITH 3';
+
 
 execute immediate user_table_sql_stmt using 1, 'cheenu78@gmail.com', 'abcd123';
 execute immediate user_table_sql_stmt using 2, 'gireesh.nemath@gmail.com', 'abcd123';
