@@ -6,19 +6,19 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
- 	<http auto-config="true">
+ 	<http auto-config="true" use-expressions="true">
  		
- 		<intercept-url pattern="/app/spring/welcome*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/app/spring/logout*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/app/spring/loginFailed*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/app/spring/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/app/spring/ajax/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+ 		<intercept-url pattern="/app/spring/welcome*" access="permitAll" />
+		<intercept-url pattern="/app/spring/logout*" access="permitAll" />
+		<intercept-url pattern="/app/spring/loginFailed*" access="permitAll" />
+		<intercept-url pattern="/app/spring/resources/**" access="permitAll" />
+		<intercept-url pattern="/app/spring/ajax/**" access="permitAll" />
 		
-		<intercept-url pattern="/app/spring/signup" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/app/spring/" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/app/spring/signup" access="permitAll" />
+		<intercept-url pattern="/app/spring/" access="permitAll" />
 		
-		<intercept-url pattern="/app/spring/main" access="ROLE_USER" />
-		<intercept-url pattern="/app/spring/rest/**" access="ROLE_USER" />
+		<intercept-url pattern="/app/spring/main" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/app/spring/rest/**" access="hasRole('ROLE_USER')" />
  		
  		<form-login login-page="/app/spring/welcome" default-target-url="/app/spring/main" authentication-failure-url="/app/spring/loginFailed" />
  		<logout logout-url="/j_spring_security_logout" logout-success-url="/app/spring/logout" />
@@ -33,10 +33,15 @@
 		   users-by-username-query="select email, password, 1 
 		   from user_table 
 		   where email=?" 
- 
-		   authorities-by-username-query="select email, 'ROLE_USER' 
-		   from user_table 
-		   where email=?" 
+		   
+		   	authorities-by-username-query="
+		   	select email, c.role_name 
+		   	from user_table a, 
+       		user_role_mapping b, 
+       		user_roles c
+		   	where email=?
+       		and a.ID = b. USER_TABLE_ID
+       		and b.ROLE_ID = c.role_id"
 		/>
 		
 	  </authentication-provider>
