@@ -75,18 +75,5 @@
             </beans:props>
          </beans:property>
 	</beans:bean>
-	
-	
-	<!-- This was a trial for transaction manager, this is not needed, the code is here just for reference -->
-	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="save" read-only="false" />
-			<tx:method name="*" rollback-for="Exception" />
-		</tx:attributes>
-	</tx:advice> 
-	 <aop:config>
-		<aop:pointcut id="serviceOperations" expression="execution(* org.srini.stayintouch.services.*.*(..))" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperations" />
-	</aop:config>-->
 	 
 </beans>

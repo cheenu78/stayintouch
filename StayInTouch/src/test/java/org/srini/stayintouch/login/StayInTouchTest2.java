@@ -45,8 +45,8 @@ public class StayInTouchTest2 {
 	@Parameters
 	public static Collection createData(){
 		Object [][] retObj = {
-				{"cheenu78@gmail.com","njally_123"}//,
-				//{"selenium@123.com","selenium_123"}
+				{"cheenu78@gmail.com","abcd123"},
+				{"gireesh.nemath@gmail.com","abcd123"}
 		};
 		return Arrays.asList(retObj);
 	}

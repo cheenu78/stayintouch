@@ -162,28 +162,6 @@ public class HomeController {
 		return "user/login";
 	}
 	
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	/*
-	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String loginAction(@ModelAttribute("userValidator") @Valid UserValidator userValidator, BindingResult result, UserDetailsValidator userDetailsValidator, BindingResult result1) {
-		if(result.hasErrors()){
-			return "user/login";
-		}else{
-			boolean success = loginService.findUserbyNameandPassword(userValidator.getUserName(), userValidator.getPassword());
-			if(success == false){
-				result.rejectValue("loginError", "org.srini.stayintouch.validators.UserValidator.userName", new Object[]{}, "The system does not know this combination.");
-				userValidator.setAuthSuccess("failed");
-				return "user/login";
-			}
-			else{
-				return "main";
-			}
-		}
-	}*/
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
