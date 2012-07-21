@@ -1,11 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page session="false"%>
 <html>
 <head>
 <title>Home</title>
 <link rel="stylesheet" type="text/css" href="/stayintouch/resources/css/style.css" media="screen" />
- <link rel="SHORTCUT ICON" href="/stayintouch/resources/images/srini-web.ico"/>
+<link rel="SHORTCUT ICON" href="/stayintouch/resources/images/srini-web.ico"/>
 <script type="text/javascript"
 	src="/stayintouch/resources/js/jquery/jquery-1.7.2.js"></script>
 <script type="text/javascript"
@@ -54,7 +54,7 @@
 							<td colspan=3 class="search_title1"> <hr/> </td>
 						</tr>
 						<tr>
-							<td class="search_title2" align="right" width="30%">First Name:</td>
+							<td class="search_title2" align="right">First Name:</td>
 							<td class="login_controls" align="left" width="100"><form:input type="text" path="firstName" size="45" maxlength="45" /></td>
 						</tr>
 						<tr>

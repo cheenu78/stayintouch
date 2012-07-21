@@ -29,7 +29,6 @@ public class StayInTouchTest2 {
 	
 	//@Before
 	public void setUp() throws Exception {
-		
 		//driver = new InternetExplorerDriver();
 		driver = new FirefoxDriver();
 		baseUrl = "http://localhost:8080/";
