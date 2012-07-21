@@ -15,6 +15,7 @@
 		<hibernate.core.version>3.5.1-Final</hibernate.core.version>
 		<hibernate.validator.version>4.0.2.GA</hibernate.validator.version>
 		<slf4j.version>1.5.11</slf4j.version>
+		<cucumber.version>1.0.0.RC24</cucumber.version>
 	</properties>
 	
 	<repositories>
@@ -309,11 +310,27 @@
 			<artifactId>com.springsource.org.apache.tiles.core</artifactId>
 			<version>${tiles.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>com.springsource.org.apache.commons.fileupload</artifactId>
 			<version>1.2.0</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.0.0</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
 
 	</dependencies>
 	<build>
@@ -324,7 +341,7 @@
 				<version>2.0.2</version>
 				<configuration>
 					<warName>stayintouch</warName>
-					<outputDirectory>C:/srinivas/downloads/tomcat 7/apache-tomcat-7.0.27/webapps</outputDirectory>
+					<outputDirectory>H:/apache-tomcat-7.0.29/webapps</outputDirectory>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -345,14 +362,14 @@
 			 
 			
 			<!-- ===============================comment when committing in svn======= -->
-			<!-- <plugin>
+			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.12</version>
 				<configuration>
 					<includes>
 						<include>**/StayInTouchTest2.java</include>
 					</includes>
-					<skip>false</skip>
+					<skip>true</skip>
 				</configuration>
 				<executions>
 					<execution>
@@ -361,11 +378,11 @@
 							<goal>test</goal>
 						</goals>
 						<configuration>
-							<skip>false</skip>
+							<skip>true</skip>
 						</configuration>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin>
 			<!-- ==========================End comment when committing in svn======= -->
 			
 		</plugins>

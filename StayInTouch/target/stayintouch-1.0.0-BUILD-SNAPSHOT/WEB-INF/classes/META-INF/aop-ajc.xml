@@ -1,6 +1,0 @@
-<aspectj>
-<aspects>
-<aspect name="org.srini.stayintouch.advice.LogAdvice"/>
-</aspects>
-</aspectj>
-
