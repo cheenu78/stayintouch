@@ -7,8 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 import cucumber.annotation.After;
 import cucumber.annotation.Before;
@@ -26,7 +28,9 @@ public class LeapScenario {
 	
 	@Before
 	public void prepare(){
-		driver = new FirefoxDriver();
+		driver = new HtmlUnitDriver(BrowserVersion.INTERNET_EXPLORER_8);
+		((HtmlUnitDriver)driver).setJavascriptEnabled(true);
+		//driver = new FirefoxDriver();
 		baseUrl = "http://localhost:8080/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}

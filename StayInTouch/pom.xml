@@ -341,7 +341,7 @@
 				<version>2.0.2</version>
 				<configuration>
 					<warName>stayintouch</warName>
-					<outputDirectory>H:/apache-tomcat-7.0.29/webapps</outputDirectory>
+					<outputDirectory>G:/tomcat 7/webapps</outputDirectory>
 				</configuration>
 			</plugin>
 			<plugin>
