@@ -35,8 +35,8 @@ public class LeapScenario {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	
-	@Given("^the user goes to the login page$")
-	public void gotoHomePage(){
+	@Given("^the user goes to the login page (.*)$")
+	public void gotoHomePage(String runId){
 		driver.get(baseUrl + "/stayintouch/app/spring/welcome");
 	}
 	
