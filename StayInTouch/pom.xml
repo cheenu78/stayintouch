@@ -385,6 +385,7 @@
 					<includes>
 						<include>**/*.java</include>
 					</includes>
+					<reportsDirectory>target/failsafe-reports</reportsDirectory>
 				</configuration>
 				
 				<executions>
