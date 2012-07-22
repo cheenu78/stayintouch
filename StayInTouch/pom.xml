@@ -383,7 +383,7 @@
 				<version>2.12</version>
 				<configuration>
 					<includes>
-						<include>**/*</include>
+						<include>**/*.java</include>
 					</includes>
 				</configuration>
 				
