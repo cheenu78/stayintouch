@@ -16,6 +16,10 @@
 		<hibernate.validator.version>4.0.2.GA</hibernate.validator.version>
 		<slf4j.version>1.5.11</slf4j.version>
 		<cucumber.version>1.0.0.RC24</cucumber.version>
+		
+		<sonar.jacoco.reportPath>target/jacoco-integration.exec</sonar.jacoco.reportPath>
+		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+
 	</properties>
 	
 	<repositories>
@@ -382,13 +386,14 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.12</version>
 				<configuration>
-					<includes>
+					<!-- <includes>
 						<include>**/*.java</include>
-					</includes>
+					</includes> -->
+					<argLine>${jacoco.agent.argLine}</argLine>
 					<reportsDirectory>target/surefire-reports</reportsDirectory>
 				</configuration>
 				
-				<executions>
+				<!-- <executions>
 					<execution>
 						<id>integration-test</id>
 						<goals>
@@ -401,8 +406,30 @@
 							<goal>verify</goal>
 						</goals>
 					</execution>
-				</executions>
+				</executions> -->
 			</plugin>
+			
+			<plugin>
+		        <groupId>org.jacoco</groupId>
+		        <artifactId>jacoco-maven-plugin</artifactId>
+		        <configuration>
+		            <propertyName>jacoco.agent.argLine</propertyName> <!-- default: argLine -->
+		            <includes>
+		                <include>**/*.java</include>
+		            </includes>
+		            <destFile>target/jacoco-integration.exec</destFile> <!-- agent -->
+		            <dataFile>target/jacoco-integration.exec</dataFile> <!-- report -->
+		        </configuration>
+		       	<executions>
+		       		<execution>
+		       			<phase>pre-integration-test</phase>
+		       			<goals>
+		       				<goal>prepare-agent</goal>
+		       			</goals>
+		       		</execution>
+		       	</executions>
+		    </plugin>
+			
 			<!-- ==========================End comment when committing in svn======= -->
 			
 		</plugins>
