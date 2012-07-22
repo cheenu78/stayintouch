@@ -74,20 +74,14 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.1</version>
-			<scope>integration-test</scope>
+			<scope>test</scope>
 		</dependency>
-		
-		<!-- <dependency>
-   			<groupId>org.seleniumhq.selenium</groupId>
-   			<artifactId>selenium</artifactId>
-   			<version>2.0a4</version>
-   			<scope>test</scope>
-		</dependency> -->
 		
 		<dependency>
 	        <groupId>org.seleniumhq.selenium</groupId>
 	        <artifactId>selenium-java</artifactId>
 	        <version>2.24.1</version>
+	        <scope>test</scope>
     	</dependency>
     	<!-- ========================================= -->
 		
@@ -330,20 +324,11 @@
 			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
-
 	</dependencies>
+	
 	<build>
+	
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<warName>stayintouch</warName>
-					<outputDirectory>G:/tomcat 7/webapps</outputDirectory>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -353,33 +338,67 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
+    			<!-- enable deploying to tomcat -->
+    			<groupId>org.codehaus.mojo</groupId>
+    			<artifactId>tomcat-maven-plugin</artifactId>
+    			<version>1.1</version>
+			    <configuration>
+			        <server>localhost</server>
+			        <url>http://localhost:8080/manager/html</url>
+			        <path>/stayintouch</path>
+			    </configuration>
+			   
 			</plugin>
 			
-			
-			 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<inherited>true</inherited>
+				<configuration>
+					<classpathContainers>
+						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+						<classpathContainer>org.eclipse.jdt.USER_LIBRARY/TOMCAT_6.0.14_LIBRARY</classpathContainer>
+					</classpathContainers>
+				</configuration>
+			</plugin>
 			
 			<!-- ===============================comment when committing in svn======= -->
+			
 			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-surefire-plugin</artifactId>
+        		<version>2.12</version>
+        		<configuration>
+		          <excludes>
+		            <exclude>**/*</exclude>
+		          </excludes>
+        		</configuration>
+      		</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.12</version>
 				<configuration>
 					<includes>
-						<include>**/StayInTouchTest2.java</include>
+						<include>**/*</include>
 					</includes>
-					<skip>true</skip>
 				</configuration>
+				
 				<executions>
 					<execution>
-						<phase>verify</phase>
+						<id>integration-test</id>
 						<goals>
-							<goal>test</goal>
+							<goal>integration-test</goal>
 						</goals>
-						<configuration>
-							<skip>true</skip>
-						</configuration>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<goals>
+							<goal>verify</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
