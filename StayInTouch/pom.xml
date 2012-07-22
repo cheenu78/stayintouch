@@ -19,6 +19,7 @@
 		
 		<sonar.jacoco.itReportPath>target/jacoco-integration.exec</sonar.jacoco.itReportPath>
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 
 	</properties>
 	
@@ -412,6 +413,7 @@
 			<plugin>
 		        <groupId>org.jacoco</groupId>
 		        <artifactId>jacoco-maven-plugin</artifactId>
+		        <version>0.5.6.201201232323</version>
 		        <configuration>
 		            <propertyName>jacoco.agent.argLine</propertyName> <!-- default: argLine -->
 		            <includes>
@@ -429,6 +431,12 @@
 		       		</execution>
 		       	</executions>
 		    </plugin>
+		    
+		    <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>2.0</version>
+            </plugin>
 			
 			<!-- ==========================End comment when committing in svn======= -->
 			
