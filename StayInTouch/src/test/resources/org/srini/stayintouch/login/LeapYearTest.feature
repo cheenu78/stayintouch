@@ -6,7 +6,7 @@ Feature: On selection of a year and a month, appropriate days must be selectable
 	Scenario Outline: User has filled in other relevant details
 		Given the user goes to the login page <run_id>
  			And the user selects the year <year_selected>
-		When the user selects a month <month_selected>
+		When the user selects a month <month_selected> <run_id>
 		Then the user should have this day to select <result>
  	
  	Examples:

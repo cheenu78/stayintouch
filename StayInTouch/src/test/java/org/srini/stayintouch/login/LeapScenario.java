@@ -45,8 +45,8 @@ public class LeapScenario {
 		new Select(driver.findElement(By.id("year"))).selectByVisibleText(year);
 	}
 	
-	@When("^the user selects a month (.*)$")
-	public void selectMonth(String month){
+	@When("^the user selects a month (.*) (.*)$")
+	public void selectMonth(String month, String id){
 		new Select(driver.findElement(By.id("month"))).selectByVisibleText(month);
 	}
 	
