@@ -22,6 +22,7 @@
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.verbose>true</sonar.verbose>
+		<sonar.jacoco.jar>C:/srinivas/downloads/jacoco/jacoco/lib/jacocoagent.jar</sonar.jacoco.jar>
 
 	</properties>
 	
@@ -389,10 +390,13 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.12</version>
 				<configuration>
-					<includes>
+				
+				<test>**/*.java</test>
+					<!-- <includes>
 						<include>**/*.java</include>
-					</includes>
+					</includes> -->
 					<!-- <argLine>-javaagent:${jacoco.agent.path}=destfile=target/jacoco-integration.exec</argLine> -->
+					<argLine>-javaagent:${sonar.jacoco.jar}=destfile='${sonar.jacoco.itReportPath}'</argLine>
 					<reportsDirectory>target/failsafe-reports</reportsDirectory>
 				</configuration>
 				
