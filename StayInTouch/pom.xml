@@ -391,10 +391,10 @@
 				<version>2.12</version>
 				<configuration>
 				
-				<test>**/*.java</test>
-					<!-- <includes>
+				
+					<includes>
 						<include>**/*.java</include>
-					</includes> -->
+					</includes>
 					<!-- <argLine>-javaagent:${jacoco.agent.path}=destfile=target/jacoco-integration.exec</argLine> -->
 					<argLine>-javaagent:${sonar.jacoco.jar}=destfile='${sonar.jacoco.itReportPath}'</argLine>
 					<reportsDirectory>target/failsafe-reports</reportsDirectory>
