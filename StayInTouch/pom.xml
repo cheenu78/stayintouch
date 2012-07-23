@@ -392,8 +392,8 @@
 					<includes>
 						<include>**/*.java</include>
 					</includes>
-					<argLine>${jacoco.agent.argLine}</argLine>
-					<reportsDirectory>target/surefire-reports</reportsDirectory>
+					<argLine>-javaagent:${jacoco.agent.path}=destfile=target/jacoco-integration.exec</argLine>
+					<reportsDirectory>target/failsafe-reports</reportsDirectory>
 				</configuration>
 				
 				<executions>
@@ -412,17 +412,17 @@
 				</executions>
 			</plugin>
 			
-			<plugin>
+			<!-- <plugin>
 		        <groupId>org.jacoco</groupId>
 		        <artifactId>jacoco-maven-plugin</artifactId>
 		        <version>0.5.6.201201232323</version>
 		        <configuration>
-		            <propertyName>jacoco.agent.argLine</propertyName> <!-- default: argLine -->
+		            <propertyName>jacoco.agent.argLine</propertyName>
 		            <includes>
 		                <include>**/*.java</include>
 		            </includes>
-		            <destFile>target/jacoco-integration.exec</destFile> <!-- agent -->
-		            <dataFile>target/jacoco-integration.exec</dataFile> <!-- report -->
+		            <destFile>target/jacoco-integration.exec</destFile>
+		            <dataFile>target/jacoco-integration.exec</dataFile>
 		        </configuration>
 		       	<executions>
 		       		<execution>
@@ -439,7 +439,7 @@
 					    </goals>
 				   </execution>
 		       	</executions>
-		    </plugin>
+		    </plugin> -->
 		    
 		    <plugin>
                 <groupId>org.codehaus.mojo</groupId>
