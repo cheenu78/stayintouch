@@ -18,7 +18,7 @@
 		<cucumber.version>1.0.0.RC24</cucumber.version>
 		
 		<sonar.jacoco.itReportPath>target/jacoco-integration.exec</sonar.jacoco.itReportPath>
-		<sonar.jacoco.reportPath>target/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.jacoco.reportPath>target/jacoco-integration.exec</sonar.jacoco.reportPath>
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.verbose>true</sonar.verbose>
